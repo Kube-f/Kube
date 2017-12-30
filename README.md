@@ -94,3 +94,7 @@ will yield an `Function name not defined` error. This error will be thrown by ku
   
 ```
 
+### `loadModule(fn)` **WIP**
+
+The `loadModule(fn)` function allows for extra modules to be loaded onto the `Kube()` object.
+
