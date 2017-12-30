@@ -37,5 +37,5 @@ export default function Kube() {
   //TODO
   this.mountModule = function mountModule() {
 
-  }
+  };
 }
