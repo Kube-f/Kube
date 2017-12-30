@@ -30,7 +30,10 @@
     "strict": ["error", "safe"],
     "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 6 }],
     "func-names": ["error", "as-needed"],
-    "prefer-arrow-callback": ["warn", { "allowNamedFunctions": true }]
+    "prefer-arrow-callback": ["warn", { "allowNamedFunctions": true }],
+    "keyword-spacing": 0,
+    "spaced-comment": 0,
+    "no-unreachable": 0
   },
   "settings": {
     "import/resolver": {
