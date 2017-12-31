@@ -94,7 +94,25 @@ will yield an `Function name not defined` error. This error will be thrown by ku
   
 ```
 
-### `loadModule(fn)` **WIP**
+### `mountModule(fn)` **WIP**
 
 The `loadModule(fn)` function allows for extra modules to be loaded onto the `Kube()` object.
+These modules can be anything from complete HTTP libraries such as [kube-http](https://github.com/Kube-f/Kube-http) or small util function sets.
+
+A module can be mounted onto the `Kube()` object like so.
+
+```js
+import kube from 'kube';
+import http from 'kube-http'
+
+const myKube = new Kube();
+
+myKube.mountModule(http);
+
+myKube.get('/', (req, res) => {
+  res.send(200);
+});
+
+myKube.listen(8080);
+```
 
