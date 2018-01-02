@@ -6,3 +6,5 @@ lib/*
 # Ignore coverage files
 coverage/*
 .nyc_output/*
+
+docs/

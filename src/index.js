@@ -2,7 +2,7 @@ import namespace from './kube/namespace';
 
 export default function Kube() {
   this.namespaces = [];
-
+  this.loadedModules = [];
   this.namespace = function namespace(name) {
     if(!name) {
       return null;
@@ -35,7 +35,10 @@ export default function Kube() {
   };
 
   //TODO
-  this.mountModule = function mountModule() {
-
+  this.mountModule = function mountModule(module) {
+    const moduleInstance = new module();
+    this[moduleInstance.moduleName] = {};
+    //here we assume that the module is an object method
+    Object.assign(this[moduleInstance.moduleName], moduleInstance);
   };
 }

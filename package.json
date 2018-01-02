@@ -1,6 +1,6 @@
 {
-  "name": "kube",
-  "version": "0.0.0-development",
+  "name": "kube-f",
+  "version": "0.1.0",
   "description": "A framework for easy scaling through namespaces",
   "main": "./lib/index.js",
   "author": "Ryan Vlaming <ryanvlaming@icloud.com>",
@@ -67,6 +67,8 @@
     "codecov": "^2.3.0",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
+    "esdoc": "^1.0.4",
+    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^4.6.1",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-import-resolver-babel-module": "^3.0.0",

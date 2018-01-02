@@ -71,3 +71,5 @@ coverage.lcov
 # dotenv environment variables file
 .env
 
+#doc files
+docs/

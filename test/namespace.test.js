@@ -62,4 +62,13 @@ describe('Namespaces', function () {
     testNamespace.def(testFunction);
     expect(function () { testNamespace.def(testFunction); }).to.throw();
   });
+
+  it('should not allow me to define unnamed functions', function () {
+    const testNamespace = Kube.namespace('namespace6');
+    expect(function () {
+      testNamespace.def(function (a) {
+        return a;
+      });
+    }).to.throw();
+  });
 });
