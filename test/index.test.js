@@ -24,6 +24,7 @@ describe('Instantiating kube', function () {
 describe('Mounting modules', function () {
   it('should be able to mount a module', function () {
     function testModule() {
+      this.moduleName = 'testModule';
       this.fn = function fn(a) {
         return a;
       };
@@ -32,6 +33,6 @@ describe('Mounting modules', function () {
     const Kube = new kubeESM();
     Kube.mountModule(testModule);
 
-    expect(Kube.fn).to.be.a('function');
+    expect(Kube.testModule.fn).to.be.a('function');
   });
 });
