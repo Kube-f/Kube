@@ -29,9 +29,9 @@ export default function Kube() {
   };
 
   this.createNamespace = function createNamespace(name) {
-    const ns = new namespace(name);
-    this.namespaces.push(ns);
-    return ns;
+    const newNamespace = new namespace(name);
+    this.namespaces.push(newNamespace);
+    return newNamespace;
   };
 
   //TODO
