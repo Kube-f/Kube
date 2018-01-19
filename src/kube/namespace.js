@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+import Promise from 'bluebird';
 
 module.exports = function namespace(name) {
   this.name = name;
@@ -17,6 +18,6 @@ module.exports = function namespace(name) {
     if(Object.keys(this).includes(fn.name)) {
       throw new Error('Cannot redefine ' + fn.name);
     }
-    this[fn.name] = fn;
+    this[fn.name] = Promise.promisify(fn);
   };
 };

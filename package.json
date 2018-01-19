@@ -5,7 +5,9 @@
   "main": "./lib/index.js",
   "author": "Ryan Vlaming <ryanvlaming@icloud.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "bluebird": "^3.5.1"
+  },
   "keywords": [
     "modern",
     "node",

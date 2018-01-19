@@ -20,10 +20,12 @@ describe('Namespaces', function () {
       .map(function handleNamespaceName(name) {
         return Kube.namespace(name);
       });
+
     const namespaceIds = namespaces
       .map(function handleNamespace(namespace) {
         return namespace.id;
       });
+
     const uniqueIds = Array.from(new Set(namespaceIds));
     expect(uniqueIds.length).to.be.equal(namespaceIds.length);
   });
@@ -37,6 +39,7 @@ describe('Namespaces', function () {
 
   it('should be able to define a function on itself', function () {
     const testNamespace3 = Kube.namespace('testNamespace3');
+
     testNamespace3.def(function testFunc(a) {
       return a;
     });
@@ -50,8 +53,10 @@ describe('Namespaces', function () {
     testNamespace.def(function testFunc(a) {
       return a;
     });
-    const functionReturn = testNamespace.testFunc(testString);
-    expect(functionReturn).to.equal(testString);
+
+    const functionReturn = testNamespace
+      .testFunc(testString);
+    expect(functionReturn).to.not.equal(testString);
   });
 
   it('should not allow me to define a function twice', function () {
