@@ -13,7 +13,7 @@ The Kube framework.
 
 ### Through yarn
 
-soon tm
+`$ yarn install kube-f`
 
 ## quickstart
 
