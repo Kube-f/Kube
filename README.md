@@ -72,6 +72,9 @@ the functions defined on it.
 a function on the namespace itself. This means that functions defined on a certain
 namespace can only be used when the namespace is imported.
 
+It is also important to note that all functions defined through `def` are
+promisified on definition to make sure all functions are executed at the right time preventing things like race conditions adn unexpected behaviour
+
 For example, this is how it can be used:
 
 ```js
@@ -81,7 +84,10 @@ For example, this is how it can be used:
     return a;
   });
   
-  console.log(myNamespace.myCoolFunction('hello kube!')); //logs "hello kube!"
+  myNamespace.myCoolFunction('hello kube!')
+    .then(function handleMyCoolFunctionResult(a) {
+      console.log(a); //hello kube!
+    })
 ```
 
 `.def()` does require you to provide a named function, this means that the following example
