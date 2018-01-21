@@ -27,7 +27,10 @@ aNamespace.def(function coolFunction(a) {
   return a;
 });
 
-console.log(aNamespace.coolFunction('hello kube!')); //hello kube!
+aNamespace.coolFunction('hello kube!')
+  .then(function handleCoolFunctionResult(a) {
+    console.log(a); //hello kube!
+  });
 ```
 
 ## Docs
