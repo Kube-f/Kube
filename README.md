@@ -97,25 +97,19 @@ will yield an `Function name not defined` error. This error will be thrown by ku
   
 ```
 
-### `mountModule(fn)` **WIP**
+### `mountModule(fn(kube, arg))` 
 
-The `loadModule(fn)` function allows for extra modules to be loaded onto the `Kube()` object.
-These modules can be anything from complete HTTP libraries such as [kube-http](https://github.com/Kube-f/Kube-http) or small util function sets.
-
-A module can be mounted onto the `Kube()` object like so.
+`mountModule` is a special function that allows you to define functions on a global scale instead of limiting yourself to a namespace. Use of a new namespace is always preferred but sometimes to apply the `DRY` rule, you must define something globally.
 
 ```js
 import kube from 'kube';
-import http from 'kube-http'
+import globalActions from './gobalActions'
 
 const myKube = new Kube();
 
-myKube.mountModule(http);
+myKube.mountModule(globalActions);
 
-myKube.get('/', (req, res) => {
-  res.send(200);
-});
+myKube.globalActions.someGlobalAction();
 
-myKube.listen(8080);
 ```
 
