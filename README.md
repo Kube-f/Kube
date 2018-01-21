@@ -13,7 +13,7 @@ The Kube framework.
 
 ### Through yarn
 
-`$ yarn install kube-f`
+`$ yarn add kube-f`
 
 ## quickstart
 
