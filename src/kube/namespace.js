@@ -18,6 +18,6 @@ module.exports = function namespace(name) {
     if(Object.keys(this).includes(fn.name)) {
       throw new Error('Cannot redefine ' + fn.name);
     }
-    this[fn.name] = Promise.promisify(fn);
+    this[fn.name] = Promise.method(fn);
   };
 };

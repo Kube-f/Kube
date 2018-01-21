@@ -76,4 +76,16 @@ describe('Namespaces', function () {
       });
     }).to.throw();
   });
+
+  it('should resolve a promise when a .then clause is attached', function () {
+    const testNamespace7 = Kube.namespace('namespace7');
+    testNamespace7.def(function handleThing(a) {
+      return a;
+    });
+
+    testNamespace7.handleThing('string')
+      .then(function nextHandler(a) {
+        expect(a).to.equal('string');
+      });
+  });
 });
