@@ -35,4 +35,16 @@ describe('Mounting modules', function () {
 
     expect(Kube.testModule.fn).to.be.a('function');
   });
+
+  it('should be able to pass arguments into modules', function () {
+    /*eslint-disable no-unused-vars*/
+    function testModule(kube, arg) {
+      this.fn = function fn(kube, arg) {
+        return kube;
+      };
+    }
+    /*eslint-enable no-unused-vars*/
+    const Kube = new kubeESM();
+    Kube.mountModule(testModule, 'poop');
+  });
 });

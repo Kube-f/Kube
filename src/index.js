@@ -38,7 +38,7 @@ export default function Kube() {
     const moduleInstance = new module(this, args);
     this[module.name] = {};
     //here we assume that the module is an object method
-    Object.assign(this[moduleInstance.moduleName], moduleInstance);
+    Object.assign(this[module.name], moduleInstance);
     return moduleInstance;
   };
 }
