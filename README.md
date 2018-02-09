@@ -119,3 +119,11 @@ myKube.globalActions.someGlobalAction();
 
 ```
 
+## FAQ 
+
+### Why is every function defined with `def()` a promise ?
+
+It is very benificial to have your entire flow be asynchronous. This way
+you can be sure every step of your application finishes and prevent things
+such as file access before the file is created and other races that you would
+otherwise had to deal with
