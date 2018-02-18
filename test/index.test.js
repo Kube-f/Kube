@@ -47,4 +47,17 @@ describe('Mounting modules', function () {
     const Kube = new kubeESM();
     Kube.mountModule(testModule, 'poop');
   });
+
+  it('should be able to load a module that does not get loaded', function () {
+    function testModuleTwo() {
+      this.meme = 'a';
+    }
+
+    const Kube = new kubeESM();
+    Kube.loadModule(testModuleTwo);
+
+    expect(function () {
+      return Kube.testModuleTwo.meme;
+    }).to.be.throw();
+  });
 });
