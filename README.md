@@ -13,7 +13,7 @@ The Kube framework.
 
 ### Through yarn
 
-soon tm
+`$ yarn add kube-f`
 
 ## quickstart
 
@@ -27,7 +27,10 @@ aNamespace.def(function coolFunction(a) {
   return a;
 });
 
-console.log(aNamespace.coolFunction('hello kube!')); //hello kube!
+aNamespace.coolFunction('hello kube!')
+  .then(function handleCoolFunctionResult(a) {
+    console.log(a); //hello kube!
+  });
 ```
 
 ## Docs
@@ -69,6 +72,9 @@ the functions defined on it.
 a function on the namespace itself. This means that functions defined on a certain
 namespace can only be used when the namespace is imported.
 
+It is also important to note that all functions defined through `def` are
+promisified on definition to make sure all functions are executed at the right time preventing things like race conditions adn unexpected behaviour
+
 For example, this is how it can be used:
 
 ```js
@@ -78,7 +84,10 @@ For example, this is how it can be used:
     return a;
   });
   
-  console.log(myNamespace.myCoolFunction('hello kube!')); //logs "hello kube!"
+  myNamespace.myCoolFunction('hello kube!')
+    .then(function handleMyCoolFunctionResult(a) {
+      console.log(a); //hello kube!
+    })
 ```
 
 `.def()` does require you to provide a named function, this means that the following example
@@ -94,25 +103,27 @@ will yield an `Function name not defined` error. This error will be thrown by ku
   
 ```
 
-### `mountModule(fn)` **WIP**
+### `mountModule(fn(kube, arg))` 
 
-The `loadModule(fn)` function allows for extra modules to be loaded onto the `Kube()` object.
-These modules can be anything from complete HTTP libraries such as [kube-http](https://github.com/Kube-f/Kube-http) or small util function sets.
-
-A module can be mounted onto the `Kube()` object like so.
+`mountModule` is a special function that allows you to define functions on a global scale instead of limiting yourself to a namespace. Use of a new namespace is always preferred but sometimes to apply the `DRY` rule, you must define something globally.
 
 ```js
 import kube from 'kube';
-import http from 'kube-http'
+import globalActions from './gobalActions'
 
 const myKube = new Kube();
 
-myKube.mountModule(http);
+myKube.mountModule(globalActions);
 
-myKube.get('/', (req, res) => {
-  res.send(200);
-});
+myKube.globalActions.someGlobalAction();
 
-myKube.listen(8080);
 ```
 
+## FAQ 
+
+### Why is every function defined with `def()` a promise ?
+
+It is very benificial to have your entire flow be asynchronous. This way
+you can be sure every step of your application finishes and prevent things
+such as file access before the file is created and other races that you would
+otherwise had to deal with
