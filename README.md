@@ -119,6 +119,20 @@ myKube.globalActions.someGlobalAction();
 
 ```
 
+### `loadModule(fn)`
+
+The `loadModule(fn)` function is a small wrapper around `fn.call` that injects the `this` scope into the function. This function is different from `mountModule(fn)` as it does not mount the module onto the `Kube` instance.
+
+```js
+import kube from 'kube';
+import initScript from './initScript'
+
+const myKube = new Kube();
+
+myKube.loadModule(initScript);
+
+```
+
 ## FAQ 
 
 ### Why is every function defined with `def()` a promise ?
