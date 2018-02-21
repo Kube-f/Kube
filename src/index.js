@@ -51,7 +51,9 @@ export default function Kube() {
   this.loadModule = function loadModule(module, args) {
     //check if module is already loaded
     if(!this.loadedModules.includes(module.name)) {
-      module.call(this, args);
+      /*eslint-disable no-new*/
+      new module(this, args); //fucking fight me
+      /*eslint-enable no-new*/
       this.loadedModules.push(module.name);
     }
     return this;
