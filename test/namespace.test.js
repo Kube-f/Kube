@@ -88,4 +88,13 @@ describe('Namespaces', function () {
         expect(a).to.equal('string');
       });
   });
+
+  it('should allow for syncronous function definitons on namespaces', function () {
+    const testNamespace8 = Kube.namespace('namespace8');
+    testNamespace8.defSync(function add(a, b) {
+      return a + b;
+    });
+
+    expect(testNamespace8.add(1, 1)).to.equal(2);
+  });
 });

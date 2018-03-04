@@ -49,7 +49,7 @@ describe('Mounting modules', function () {
   });
 
   it('should be able to load a module that does not get loaded', function () {
-    function testModuleTwo(kube, args) {
+    function testModuleTwo() {
       this.meme = 'a';
     }
 

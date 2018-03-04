@@ -49,7 +49,7 @@ export default function Kube() {
   };
 
   this.loadModule = function loadModule(module, args) {
-    //check if module is already loaded
+    //prevent double module loading
     if(!this.loadedModules.includes(module.name)) {
       /*eslint-disable no-new*/
       new module(this, args); //fucking fight me

@@ -20,4 +20,17 @@ module.exports = function namespace(name) {
     }
     this[fn.name] = Promise.method(fn);
   };
+
+  this.defSync = function defSync(fn) {
+    //disallow unnamed functions
+    if(!fn.name || fn.name === '') {
+      throw new Error('Function name not defined');
+    }
+
+    //disallow redefinitions
+    if(Object.keys(this).includes(fn.name)) {
+      throw new Error('Cannot redefine ' + fn.name);
+    }
+    this[fn.name] = fn;
+  };
 };
