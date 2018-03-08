@@ -1,6 +1,6 @@
 # Kube
 
-The Kube framework.
+A framework for imposing better separation of concerns in your application through namespaces.
 
 ## installing
 
