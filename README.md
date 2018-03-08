@@ -103,6 +103,21 @@ will yield an `Function name not defined` error. This error will be thrown by ku
   
 ```
 
+### `.defSync(fn)`
+The same as `.def(fn)` except it does not get promisified.
+
+Can be called in the same manner.
+
+```js
+  const myNamespace = myKube.namespace('myNamespace');
+  
+  myNamespace.defSync(function add(a, b) {
+    return a + b;
+  });
+  
+  const two = myNamespace.add(1,1); //two is now equal to 2
+```
+
 ### `mountModule(fn(kube, arg))` 
 
 `mountModule` is a special function that allows you to define functions on a global scale instead of limiting yourself to a namespace. Use of a new namespace is always preferred but sometimes to apply the `DRY` rule, you must define something globally.
